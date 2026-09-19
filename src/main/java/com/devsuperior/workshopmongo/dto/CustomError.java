@@ -1,5 +1,6 @@
 package com.devsuperior.workshopmongo.dto;
 
+import java.net.URI;
 import java.time.Instant;
 
 public class CustomError {
@@ -9,7 +10,7 @@ public class CustomError {
     private String error;
     private String path;
 
-    public CustomError(Instant timestamp, Integer status, String error, String path) {
+    public CustomError(Instant timestamp, Integer status, String error, URI path) {
         this.timestamp = timestamp;
         this.status = status;
         this.error = error;
