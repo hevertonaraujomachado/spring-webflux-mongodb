@@ -38,6 +38,13 @@ public class UserController {
 				.map(newUser -> ResponseEntity.created(builder.path("/users/{id}")
 						.buildAndExpand(newUser.getId()).toUri()).body(newUser));
 	}
-
+@PutMapping(value = "/{id}")
+	public Mono<ResponseEntity<UserDTO>> update(@PathVariable String id, @RequestBody UserDTO dto) {
+		return service.update(id, dto).map(userUpdate -> ResponseEntity.ok().body(userUpdate));
+}
+@DeleteMapping(value = "/{id}")
+public Mono<ResponseEntity<Void>> delete(@PathVariable String id) {
+		return service.delete(id).then(Mono.just(ResponseEntity.noContent().<Void>build()));
+}
 	}
 	
